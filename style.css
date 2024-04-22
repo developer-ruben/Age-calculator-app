@@ -50,7 +50,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--color-neutral-light-grey);
+  background-color: var(--color-neutral-off-white);
 
   padding: 1.6rem;
 }
