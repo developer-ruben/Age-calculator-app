@@ -1,4 +1,5 @@
 const form = document.getElementById("form");
+
 const dayInput = document.getElementById("day");
 const monthInput = document.getElementById("month");
 const yearInput = document.getElementById("year");
@@ -15,6 +16,15 @@ function isValidDate(day, month, year) {
     date.getMonth() === month - 1 &&
     date.getDate() === day
   );
+}
+
+function isFutureDate(day, month, year) {
+  const date = new Date(year, month - 1, day);
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  return date > today;
 }
 
 function getAge(fromDate, toDate = new Date()) {
@@ -77,71 +87,94 @@ function clearError(input) {
   input.closest(".form__group").classList.remove("form__group--error");
 }
 
-form.addEventListener("submit", (e) => {
+function validateInput(input, { min, max, message }) {
+  const value = input.value.trim();
+
+  if (value === "") {
+    showError(input, "This field is required");
+    return null;
+  }
+
+  const number = Number(value);
+
+  if (Number.isNaN(number) || number < min || number > max) {
+    showError(input, message);
+    return null;
+  }
+
+  clearError(input);
+
+  return number;
+}
+
+function validateDate(day, month, year) {
+  // Check if the date actually exists
+  if (!isValidDate(day, month, year)) {
+    form.classList.add("form--error");
+    return false;
+  }
+
+  // Check if the date is in the future
+  if (isFutureDate(day, month, year)) {
+    form.classList.add("form--error");
+    return false;
+  }
+
+  form.classList.remove("form--error");
+
+  return true;
+}
+
+function validateForm() {
+  const currentYear = new Date().getFullYear();
+
+  const day = validateInput(dayInput, {
+    min: 1,
+    max: 31,
+    message: "Must be a valid day",
+  });
+
+  const month = validateInput(monthInput, {
+    min: 1,
+    max: 12,
+    message: "Must be a valid month",
+  });
+
+  const year = validateInput(yearInput, {
+    min: 1,
+    max: currentYear,
+    message: "Must be in the past",
+  });
+
+  // Stop if any individual field is invalid
+  if (day === null || month === null || year === null) {
+    return null;
+  }
+
+  // Validate the complete date
+  if (!validateDate(day, month, year)) {
+    return null;
+  }
+
+  return { day, month, year };
+}
+
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
+
+  // Reset previous errors
   [dayInput, monthInput, yearInput].forEach(clearError);
   form.classList.remove("form--error");
 
-  let day = dayInput.value;
-  let month = monthInput.value;
-  let year = yearInput.value;
-  const currentYear = new Date().getFullYear();
+  const values = validateForm();
 
-  let errorCount = 0;
-  if (day !== "") {
-    day = Number(day);
-    if (day > 31 || day <= 0 || Number.isNaN(day)) {
-      showError(dayInput, "Must be a valid day");
-      errorCount++;
-    } else {
-      clearError(dayInput);
-    }
-  } else {
-    showError(dayInput, "This field is required");
-    errorCount++;
-  }
+  if (!values) return;
 
-  if (month !== "") {
-    month = Number(month);
-    if (month > 12 || month <= 0 || Number.isNaN(month)) {
-      showError(monthInput, "Must be a valid month");
-      errorCount++;
-    } else {
-      clearError(monthInput);
-    }
-  } else {
-    showError(monthInput, "This field is required");
-    errorCount++;
-  }
+  const { day, month, year } = values;
 
-  if (year !== "") {
-    year = Number(year);
-    if (year > currentYear || year < 0 || Number.isNaN(year)) {
-      showError(yearInput, "Must be in the past");
+  const age = getAge(new Date(year, month - 1, day));
 
-      errorCount++;
-    } else {
-      clearError(yearInput);
-    }
-  } else {
-    showError(yearInput, "This field is required");
-    errorCount++;
-  }
-
-  if (errorCount === 0) {
-    if (!isValidDate(day, month, year)) {
-      form.classList.add("form--error");
-      return;
-    } else {
-      form.classList.remove("form--error");
-
-      (async () => {
-        const age = getAge(new Date(year, month - 1, day));
-
-        await animateNumber(yearValue, age.years, 1200);
-        await animateNumber(monthValue, age.months, 800);
-        await animateNumber(dayValue, age.days, 800);
-      })();
-    }
-  }
+  await animateNumber(yearValue, age.years, 1200);
+  await animateNumber(monthValue, age.months, 800);
+  await animateNumber(dayValue, age.days, 800);
 });

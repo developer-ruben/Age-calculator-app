@@ -216,7 +216,7 @@ button {
 .form__fields {
   display: flex;
   position: relative;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--spacing-400);
   z-index: 1;
   background-color: hsl(var(--clr-white));
