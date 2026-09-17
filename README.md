@@ -1,0 +1,5 @@
+# Frontend Mentor - Age calculator app
+
+![Design preview for the Age calculator app coding challenge](/design/preview.jpg)
+
+## Welcome! 👋

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <meta
+      name="description"
+      content="Age Calculator App built as a Frontend Mentor challenge. Enter a birth date to calculate the exact age in years, months, and days with custom form validation and animated results."
+    />
+
+    <meta
+      name="keywords"
+      content="age calculator, frontend mentor, javascript, html, css, date calculator, age in years months days, form validation, web development"
+    />
+
+    <meta name="author" content="Ruben de Man" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Age calculator app</title>
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <article class="age-calculator">
+        <form action="#" class="form" id="form" novalidate>
+          <div class="form__fields">
+            <div class="form__group">
+              <label class="form__label" for="day">Day</label>
+              <input
+                class="form__input"
+                placeholder="DD"
+                type="number"
+                name="day"
+                id="day"
+                aria-describedby="day-error"
+              />
+              <p class="form__error" id="day-error">Must be a valid day</p>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="month">Month</label>
+              <input
+                class="form__input"
+                placeholder="MM"
+                type="number"
+                name="month"
+                id="month"
+                aria-describedby="month-error"
+              />
+              <p class="form__error" id="month-error">Must be a valid month</p>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="year">Year</label>
+              <input
+                class="form__input"
+                placeholder="YYYY"
+                type="number"
+                name="year"
+                id="year"
+                aria-describedby="year-error"
+              />
+              <p class="form__error" id="year-error">Must be in the past</p>
+            </div>
+          </div>
+          <p class="form__error">Must be a valid date</p>
+          <button class="form__button" type="submit" aria-label="Calculate age">
+            <img src="./assets/images/icon-arrow.svg" alt="" />
+          </button>
+        </form>
+        <div class="age-calculator__content" aria-live="polite">
+          <output class="age-calculator__text">
+            <span class="age-calculator__value" id="year-value">--</span> years
+          </output>
+          <output class="age-calculator__text">
+            <span class="age-calculator__value" id="month-value">--</span>
+            months
+          </output>
+          <output class="age-calculator__text">
+            <span class="age-calculator__value" id="day-value">--</span> days
+          </output>
+        </div>
+      </article>
+    </main>
+
+    <footer class="attribution">
+      <p class="attribution__text">
+        Challenge by
+        <a
+          class="attribution__link"
+          href="https://www.frontendmentor.io?ref=challenge"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Frontend Mentor</a
+        >. Coded by
+        <a
+          class="attribution__link"
+          href="https://rubendeman.nl"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Ruben de Man</a
+        >.
+      </p>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

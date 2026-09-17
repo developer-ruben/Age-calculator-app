@@ -1,0 +1,410 @@
+/* FONTS */
+
+/* Poppins  */
+@font-face {
+  font-style: normal;
+  font-weight: 700;
+  src: url("./assets/fonts/Poppins-Bold.ttf") format("truetype");
+  font-family: "Poppins";
+  font-display: swap;
+}
+
+@font-face {
+  font-style: italic;
+  font-weight: 700;
+  src: url("./assets/fonts/Poppins-BoldItalic.ttf") format("truetype");
+  font-family: "Poppins";
+  font-display: swap;
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 800;
+  src: url("./assets/fonts/Poppins-ExtraBold.ttf") format("truetype");
+  font-family: "Poppins";
+  font-display: swap;
+}
+
+@font-face {
+  font-style: italic;
+  font-weight: 800;
+  src: url("./assets/fonts/Poppins-ExtraBoldItalic.ttf") format("truetype");
+  font-family: "Poppins";
+  font-display: swap;
+}
+
+@font-face {
+  font-style: italic;
+  font-weight: 400;
+  src: url("./assets/fonts/Poppins-Italic.ttf") format("truetype");
+  font-family: "Poppins";
+  font-display: swap;
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/Poppins-Regular.ttf") format("truetype");
+  font-family: "Poppins";
+  font-display: swap;
+}
+
+/* VARIABLES */
+
+:root {
+  --clr-purple-500: 259, 100%, 65%;
+  --clr-red-400: 0, 100%, 67%;
+
+  --clr-white: 0, 100%, 100%;
+  --clr-grey-100: 0, 0%, 94%;
+  --clr-grey-200: 0, 0%, 86%;
+  --clr-grey-500: 0, 1%, 44%;
+  --clr-black: 0, 0%, 0%;
+
+  --text-preset-1-size: 6.5rem; /* 104px */
+  --text-preset-1-height: 1.1;
+  --text-preset-1-ls: -0.125rem; /* -2px */
+
+  --text-preset-2-size: 3.5rem; /* 56px */
+  --text-preset-2-height: 1.5;
+
+  --text-preset-3-size: 2rem; /* 32px */
+  --text-preset-3-height: 1.5;
+
+  --text-preset-4-size: 1.25rem; /* 20px */
+  --text-preset-4-height: 1.5;
+
+  --text-preset-5-bold-size: 0.875rem; /* 14px */
+  --text-preset-5-bold-height: 1.5;
+  --text-preset-5-bold-ls: 0.3125rem; /* 5px */
+
+  --text-preset-5-size: 0.875rem; /* 14px */
+  --text-preset-5-height: 1.5;
+
+  --text-preset-6-bold-size: 0.75rem; /* 12px */
+  --text-preset-6-bold-height: 1.5;
+  --text-preset-6-bold-ls: 0.25rem; /* 4px */
+
+  --text-preset-6-size: 0.75rem; /* 12px */
+  --text-preset-6-height: 1.5;
+
+  --spacing-0: 0;
+  --spacing-50: 0.25rem;
+  --spacing-100: 0.5rem;
+  --spacing-150: 0.75rem;
+  --spacing-200: 1rem;
+  --spacing-300: 1.5rem;
+  --spacing-400: 2rem;
+  --spacing-500: 2.5rem;
+  --spacing-600: 3rem;
+  --spacing-700: 3.5rem;
+  --spacing-800: 4rem;
+  --spacing-900: 4.5rem;
+  --spacing-1000: 5rem;
+  --spacing-1100: 5.5rem;
+  --spacing-1200: 6rem;
+  --spacing-1300: 6.5rem;
+  --spacing-1400: 7rem;
+  --spacing-1500: 7.5rem;
+  --spacing-1600: 8rem;
+  --spacing-1700: 8.5rem;
+}
+
+/* GENERAL */
+
+html {
+  position: relative;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(var(--clr-grey-100));
+  padding: var(--spacing-500);
+  min-height: 100vh;
+  color: hsl(var(--clr-grey-500));
+  font-family: "Poppins";
+}
+
+main {
+  width: 100%;
+}
+
+p {
+  font-size: var(--text-preset-5-size);
+  line-height: var(--text-preset-5-height);
+}
+
+input,
+button {
+  font: inherit;
+}
+
+/* UTILITY */
+
+.sr-only {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  white-space: nowrap; /* prevents line breaks */
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1114px;
+}
+
+/* CALCULATOR */
+
+.age-calculator {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--spacing-300) var(--spacing-300) 12.5rem
+    var(--spacing-300);
+  background-color: hsl(var(--clr-white));
+  padding: var(--spacing-700);
+  width: 100%;
+  max-width: 840px;
+}
+
+.form {
+  position: relative;
+  margin-bottom: var(--spacing-700);
+}
+
+.form > .form__error {
+  bottom: 50%;
+}
+
+.form--error {
+  padding-bottom: var(--spacing-400);
+}
+
+.form--error > .form__error {
+  bottom: 16px;
+  transform: translateY(100%);
+}
+
+.form--error .form__input {
+  border-color: hsl(var(--clr-red-400));
+}
+
+.form--error .form__label {
+  color: hsl(var(--clr-red-400));
+}
+
+.form__fields {
+  display: flex;
+  position: relative;
+  align-items: center;
+  gap: var(--spacing-400);
+  z-index: 1;
+  background-color: hsl(var(--clr-white));
+}
+
+.form__group {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: var(--spacing-100);
+  transition: margin-bottom 0.3s ease-in-out;
+  width: 160px;
+}
+
+.form__group--error {
+  margin-bottom: var(--spacing-400);
+}
+
+.form__group--error .form__input {
+  border-color: hsl(var(--clr-red-400));
+}
+
+.form__group--error .form__error {
+  bottom: -8px;
+  transform: translateY(100%);
+}
+
+.form__group--error .form__label {
+  color: hsl(var(--clr-red-400));
+}
+
+.form__label {
+  transition: color 0.3s ease-in-out;
+  font-weight: 700;
+  font-size: var(--text-preset-5-bold-size);
+  line-height: var(--text-preset-5-bold-height);
+  letter-spacing: var(--text-preset-5-bold-ls);
+  text-transform: uppercase;
+}
+
+.form__input {
+  position: relative;
+  z-index: 1;
+  transition: border-color 0.3s ease-in-out;
+  border: 1px solid hsl(var(--clr-grey-200));
+  border-radius: var(--spacing-100);
+  padding: var(--spacing-100) var(--spacing-300);
+  color: hsl(var(--clr-black));
+  font-weight: 700;
+  font-size: var(--text-preset-3-size);
+  line-height: var(--text-preset-3-height);
+}
+
+.form__error {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition:
+    transform 0.3s ease-in-out,
+    bottom 0.3s ease-in-out;
+  color: hsl(var(--clr-red-400));
+  font-style: italic;
+  font-size: var(--text-preset-5-size);
+  line-height: var(--text-preset-5-height);
+}
+
+.form__button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transform: translatey(100%);
+  transition: background-color 0.3s ease-in-out;
+  border: 0;
+  border-radius: 50%;
+  background-color: hsl(var(--clr-purple-500));
+  width: 96px;
+  height: 96px;
+}
+
+.form__button:hover {
+  cursor: pointer;
+  background-color: hsl(var(--clr-black));
+}
+
+.age-calculator__content {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid hsl(var(--clr-grey-200));
+  padding-top: var(--spacing-600);
+}
+.age-calculator__text {
+  color: hsl(var(--clr-black));
+  font-style: italic;
+  font-weight: 800;
+  font-size: var(--text-preset-1-size);
+  line-height: var(--text-preset-1-height);
+  letter-spacing: var(--text-preset-1-ls);
+}
+
+.age-calculator__value {
+  color: hsl(var(--clr-purple-500));
+}
+
+/* ATTRIBUTION */
+
+.attribution {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  border-top-right-radius: var(--spacing-200);
+  background: hsl(var(--clr-white));
+  padding: var(--spacing-200);
+  font-style: italic;
+}
+
+.attribution__link {
+  transition: color 0.3s ease-in-out;
+  color: hsl(var(--clr-purple-500));
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.attribution__link:hover {
+  text-decoration: underline;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 48rem) {
+  .form {
+    margin-bottom: var(--spacing-1000);
+  }
+  .form__fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .form__group {
+    width: unset;
+  }
+  .form__input {
+    width: 100%;
+  }
+  .form__button {
+    right: 50%;
+    transform: translate(50%, 125%);
+  }
+  .age-calculator__content {
+    padding-top: var(--spacing-1000);
+  }
+  .attribution {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 46.25rem) {
+  .age-calculator {
+    padding: var(--spacing-700) var(--spacing-300);
+  }
+
+  .form__label {
+    font-size: var(--text-preset-6-bold-size);
+    line-height: var(--text-preset-6-bold-height);
+    letter-spacing: var(--text-preset-6-bold-ls);
+  }
+
+  .form__input {
+    font-size: var(--text-preset-4-size);
+    line-height: var(--text-preset-4-height);
+  }
+
+  .form__button {
+    transform: translate(50%, 175%);
+    width: 64px;
+    height: 64px;
+  }
+
+  .age-calculator__text {
+    font-size: var(--text-preset-2-size);
+    line-height: var(--text-preset-2-height);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* stop most animations/transitions for users who asked for reduced motion */
+  * {
+    animation: none !important; /* remove animations */
+    transition: none !important; /* remove transitions */
+  }
+}
